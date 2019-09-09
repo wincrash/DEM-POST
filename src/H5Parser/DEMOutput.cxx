@@ -63,9 +63,9 @@ void DEMOutput::ReadData()
         p.r=POSITIONS[i*4+3];
         p.fix=FIX[i];
 
-        p.fx=POSITIONS[i*4+0];
-        p.fy=POSITIONS[i*4+1];
-        p.fz=POSITIONS[i*4+2];
+        p.fx=FORCE[i*4+0];
+        p.fy=FORCE[i*4+1];
+        p.fz=FORCE[i*4+2];
         p.force=std::sqrt(p.fx*p.fx+p.fy*p.fy+p.fz*p.fz);
         FORCE_FIX[p.fix]=FORCE_FIX[p.fix]+p.force;
         particles.push_back(p);
