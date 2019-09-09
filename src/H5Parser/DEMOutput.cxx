@@ -64,7 +64,7 @@ void DEMOutput::ReadData()
     double bmaxx=-1E+10;
     double bmaxy=-1E+10;
     double bmaxz=-1E+10;
-    for(int i=0;i<NumberOfBoundaries*3;i++)
+    for(int i=0;i<4*3;i++)
     {
         double bx=BOUNDARY_POINTS[i*4+0];
         double by=BOUNDARY_POINTS[i*4+1];
@@ -81,6 +81,9 @@ void DEMOutput::ReadData()
     BoundaryLengthx=bmaxx-bminx;
     BoundaryLengthy=bmaxy-bminy;
     BoundaryLengthz=bmaxz-bminz;
+    std::cout<<"ilgis x "<<BoundaryLengthx<<"\n";
+    std::cout<<"ilgis y "<<BoundaryLengthy<<"\n";
+    std::cout<<"ilgis z "<<BoundaryLengthz<<"\n";
 
     particles.reserve(NumberOfPoints);
     minx=1E+10;
