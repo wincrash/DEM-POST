@@ -8,12 +8,11 @@ CSVRow::CSVRow()
 
 void CSVRow::Calculate(DEMOutput&current,DEMOutput&zero)
 {
-
     auto getName=[](auto a,auto b)->std::string
     {
-            std::stringstream str;
-            str<<a<<"_"<<b;
-            return str.str();
+        std::stringstream str;
+        str<<a<<"_"<<b;
+        return str.str();
     };
     names.push_back("STEP");
     values.push_back(current.STEP);
@@ -50,13 +49,8 @@ void CSVRow::Calculate(DEMOutput&current,DEMOutput&zero)
         names.push_back(getName("FORCE_FIX",i));
         values.push_back(current.FORCE_FIX[i]);
     }
-
-
-
-
-
-
 }
+
 std::string CSVRow::getHeader()
 {
     std::stringstream str;
@@ -65,6 +59,7 @@ std::string CSVRow::getHeader()
     str<<"0";
     return str.str();
 }
+
 std::string CSVRow::getValues()
 {
     std::stringstream str;
