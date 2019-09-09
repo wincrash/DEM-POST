@@ -49,6 +49,14 @@ void CSVRow::Calculate(DEMOutput&current,DEMOutput&zero)
         names.push_back(getName("FORCE_FIX",i));
         values.push_back(current.FORCE_FIX[i]);
     }
+    for(int i=0;i<current.NumberOfBoundaries;i++)
+    {
+        names.push_back(getName("BOUNDARIES_FORCE",i));
+        values.push_back(current.BOUNDARY_FORCE[i]);
+    }
+
+
+
 }
 
 std::string CSVRow::getHeader()

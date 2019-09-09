@@ -39,11 +39,20 @@ void DEMOutput::ReadData()
     hsize_t dim[2];
     dt.get_dataspace().get_dims(dim);
     NumberOfPoints = dim[0];
+
+    auto dt1 = gr.open_dataset("BOUNDARY_FORCE");
+    hsize_t dim1[2];
+    dt1.get_dataspace().get_dims(dim1);
+    NumberOfBoundaries = dim1[0];
+
+
     std::vector<double> POSITIONS=ReadDoubleArray(gr,"POSITIONS",NumberOfPoints,4);
     std::vector<double> FORCE=ReadDoubleArray(gr,"FORCE",NumberOfPoints,4);
     std::vector<int> FIX=ReadIntArray(gr,"PARTICLE_FIX",NumberOfPoints,1);
     MAX_FIX=*std::max_element(FIX.begin(),FIX.end())+1;
     FORCE_FIX.resize(MAX_FIX,0);
+
+    BOUNDARY_FORCE=ReadDoubleArray(gr,"BOUNDARY_FORCE",NumberOfBoundaries,1);
 
     particles.reserve(NumberOfPoints);
     minx=1E+10;

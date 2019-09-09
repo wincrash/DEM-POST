@@ -16,6 +16,7 @@ public:
     std::string filename;
     TASKAI particles;
     int NumberOfPoints;
+    int NumberOfBoundaries;
     double TIME;
     int STEP;
     int MAX_FIX;
@@ -32,6 +33,7 @@ public:
     double lengthy;
     double lengthz;
     std::vector<double> FORCE_FIX;
+    std::vector<double> BOUNDARY_FORCE;
 };
 
 #endif // DEMOUTPUT_H
