@@ -69,13 +69,13 @@ void DEMOutput::ReadData()
         double bx=BOUNDARY_POINTS[i*4+0];
         double by=BOUNDARY_POINTS[i*4+1];
         double bz=BOUNDARY_POINTS[i*4+2];
-        if(bx<minx) bminx=bx;
-        if(by<miny) bminy=by;
-        if(bz<minz) bminz=bz;
+        if(bx<bminx) bminx=bx;
+        if(by<bminy) bminy=by;
+        if(bz<bminz) bminz=bz;
 
-        if(bx>maxx) bmaxx=bx;
-        if(by>maxy) bmaxy=by;
-        if(bz>maxz) bmaxz=bz;
+        if(bx>bmaxx) bmaxx=bx;
+        if(by>bmaxy) bmaxy=by;
+        if(bz>bmaxz) bmaxz=bz;
     }
 
     BoundaryLengthx=bmaxx-bminx;
