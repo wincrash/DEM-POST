@@ -34,6 +34,11 @@ public:
     double lengthz;
     std::vector<double> FORCE_FIX;
     std::vector<double> BOUNDARY_FORCE;
+
+    double BoundaryLengthx;
+    double BoundaryLengthy;
+    double BoundaryLengthz;
+
 };
 
 #endif // DEMOUTPUT_H

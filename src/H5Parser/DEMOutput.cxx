@@ -54,6 +54,34 @@ void DEMOutput::ReadData()
 
     BOUNDARY_FORCE=ReadDoubleArray(gr,"BOUNDARY_FORCE",NumberOfBoundaries,1);
 
+    std::vector<double> BOUNDARY_POINTS=ReadDoubleArray(gr,"BOUNDARY_POINTS",NumberOfBoundaries*3,4);
+
+
+    double bminx=1E+10;
+    double bminy=1E+10;
+    double bminz=1E+10;
+
+    double bmaxx=-1E+10;
+    double bmaxy=-1E+10;
+    double bmaxz=-1E+10;
+    for(int i=0;i<NumberOfBoundaries*3;i++)
+    {
+        double bx=BOUNDARY_POINTS[i*4+0];
+        double by=BOUNDARY_POINTS[i*4+1];
+        double bz=BOUNDARY_POINTS[i*4+2];
+        if(bx<minx) bminx=bx;
+        if(by<miny) bminy=by;
+        if(bz<minz) bminz=bz;
+
+        if(bx>maxx) bmaxx=bx;
+        if(by>maxy) bmaxy=by;
+        if(bz>maxz) bmaxz=bz;
+    }
+
+    BoundaryLengthx=bmaxx-bminx;
+    BoundaryLengthy=bmaxy-bminy;
+    BoundaryLengthz=bmaxz-bminz;
+
     particles.reserve(NumberOfPoints);
     minx=1E+10;
     miny=1E+10;

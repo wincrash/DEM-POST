@@ -44,6 +44,22 @@ void CSVRow::Calculate(DEMOutput&current,DEMOutput&zero)
     values.push_back((current.lengthz-zero.lengthz)/zero.lengthz);
 
 
+    names.push_back("BOUNDARY_DISPLACEMENT_X");
+    values.push_back(current.BoundaryLengthx-zero.BoundaryLengthx);
+    names.push_back("BOUNDARY_DISPLACEMENT_Y");
+    values.push_back(current.BoundaryLengthy-zero.BoundaryLengthy);
+    names.push_back("BOUNDARY_DISPLACEMENT_Z");
+    values.push_back(current.BoundaryLengthz-zero.BoundaryLengthz);
+
+    names.push_back("BOUNDARY_STRAIN_X");
+    values.push_back((current.BoundaryLengthx-zero.BoundaryLengthx)/zero.BoundaryLengthx);
+    names.push_back("BOUNDARY_STRAIN_Y");
+    values.push_back((current.BoundaryLengthy-zero.BoundaryLengthy)/zero.BoundaryLengthy);
+    names.push_back("BOUNDARY_STRAIN_Z");
+    values.push_back((current.BoundaryLengthz-zero.BoundaryLengthz)/zero.BoundaryLengthz);
+
+
+
     for(int i=0;i<current.MAX_FIX;i++)
     {
         names.push_back(getName("FORCE_FIX",i));
