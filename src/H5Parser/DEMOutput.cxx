@@ -81,9 +81,6 @@ void DEMOutput::ReadData()
     BoundaryLengthx=bmaxx-bminx;
     BoundaryLengthy=bmaxy-bminy;
     BoundaryLengthz=bmaxz-bminz;
-    std::cout<<"ilgis x "<<BoundaryLengthx<<"\n";
-    std::cout<<"ilgis y "<<BoundaryLengthy<<"\n";
-    std::cout<<"ilgis z "<<BoundaryLengthz<<"\n";
 
     particles.reserve(NumberOfPoints);
     minx=1E+10;
