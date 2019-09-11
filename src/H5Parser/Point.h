@@ -15,6 +15,7 @@ public:
     double fy;
     double fz;
     double r;
+    double temperature;
 };
 
 #endif // POINT_H

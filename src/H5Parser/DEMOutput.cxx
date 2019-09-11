@@ -3,6 +3,11 @@
 #include "H5Parser/hdf_wrapper.hpp"
 #include <cmath>
 #include <algorithm>
+
+
+#define PADALINIMU_SKAICIUS 20
+
+
 DEMOutput::DEMOutput(std::string filename)
 { 
     this->filename=filename;
@@ -34,6 +39,7 @@ void DEMOutput::ReadData()
     std::cout << "Reading "<< filename<< std::endl;
     STEP = gr.attrs().get<int>("STEP");
     TIME = gr.attrs().get<double>("TIME");
+    THERMAL_TIME=gr.attrs().get<double>("TIME_TEMPERATURE");
 
     auto dt = gr.open_dataset("POSITIONS");
     hsize_t dim[2];
@@ -55,6 +61,9 @@ void DEMOutput::ReadData()
     BOUNDARY_FORCE=ReadDoubleArray(gr,"BOUNDARY_FORCE",NumberOfBoundaries,1);
 
     std::vector<double> BOUNDARY_POINTS=ReadDoubleArray(gr,"BOUNDARY_POINTS",NumberOfBoundaries*3,4);
+
+
+ std::vector<double>  TEMPERATURE=ReadDoubleArray(gr,"TEMPERATURE",NumberOfPoints,1);
 
 
     double bminx=1E+10;
@@ -105,6 +114,7 @@ void DEMOutput::ReadData()
         p.fz=FORCE[i*4+2];
         p.force=std::sqrt(p.fx*p.fx+p.fy*p.fy+p.fz*p.fz);
         FORCE_FIX[p.fix]=FORCE_FIX[p.fix]+p.force;
+        p.temperature=TEMPERATURE[i];
         particles.push_back(p);
 
         if(p.x<minx) minx=p.x;
@@ -115,10 +125,38 @@ void DEMOutput::ReadData()
         if(p.y>maxy) maxy=p.y;
         if(p.z>maxz) maxz=p.z;
 
+
+
     }
 
     lengthx=maxx-minx;
     lengthy=maxy-miny;
     lengthz=maxz-minz;
+
+    CenterLineX_POS.resize(PADALINIMU_SKAICIUS,0);
+    CenterLineX_TEMP.resize(PADALINIMU_SKAICIUS,0);
+    double DeltaX=lengthx/(PADALINIMU_SKAICIUS-1);
+    double RADIUS_MAT=DeltaX/2;
+    for(int i=0;i<PADALINIMU_SKAICIUS;i++)
+    {
+        CenterLineX_POS[i]=minx+i*DeltaX;
+
+        int patekoDaleliu=0;
+
+        for(Point p:particles)
+        {
+            double ilgis=std::sqrt((p.x-CenterLineX_POS[i])*(p.x-CenterLineX_POS[i])+p.y*p.y+p.z*p.z);
+            if(ilgis<=RADIUS_MAT)
+            {
+                patekoDaleliu++;
+                CenterLineX_TEMP[i]=CenterLineX_TEMP[i]+p.temperature;
+            }
+
+
+        }
+        CenterLineX_TEMP[i]=CenterLineX_TEMP[i]/patekoDaleliu;
+     //   std::cout<<"Padalinimas "<<CenterLineX_POS[i]<<" pakliuvo "<<patekoDaleliu<<"\n";
+    }
+
 
 }

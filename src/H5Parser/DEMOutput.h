@@ -18,6 +18,7 @@ public:
     int NumberOfPoints;
     int NumberOfBoundaries;
     double TIME;
+    double THERMAL_TIME;
     int STEP;
     int MAX_FIX;
 
@@ -38,6 +39,11 @@ public:
     double BoundaryLengthx;
     double BoundaryLengthy;
     double BoundaryLengthz;
+
+
+    std::vector<double> CenterLineX_POS;
+    std::vector<double> CenterLineX_TEMP;
+
 
 };
 

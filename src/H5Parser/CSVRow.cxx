@@ -1,5 +1,6 @@
 #include "CSVRow.h"
 #include <sstream>
+#include <iostream>
 
 CSVRow::CSVRow()
 {
@@ -18,6 +19,9 @@ void CSVRow::Calculate(DEMOutput&current,DEMOutput&zero)
     values.push_back(current.STEP);
     names.push_back("TIME");
     values.push_back(current.TIME);
+    names.push_back("THERMAL_TIME");
+    values.push_back(current.THERMAL_TIME);
+
 
     names.push_back("MAX_FIX");
     values.push_back(current.MAX_FIX);
@@ -70,6 +74,16 @@ void CSVRow::Calculate(DEMOutput&current,DEMOutput&zero)
         names.push_back(getName("BOUNDARIES_FORCE",i));
         values.push_back(current.BOUNDARY_FORCE[i]);
     }
+
+    for(int i=0;i<current.CenterLineX_POS.size();i++)
+    {
+        names.push_back(getName("CenterLineX_POS",i));
+        values.push_back(current.CenterLineX_POS[i]);
+        names.push_back(getName("CenterLineX_TEMP",i));
+        values.push_back(current.CenterLineX_TEMP[i]);
+        std::cout<<i<<" POS "<<current.CenterLineX_POS[i]<<"  temp "<<current.CenterLineX_TEMP[i]<<"\n";
+    }
+
 
 
 
