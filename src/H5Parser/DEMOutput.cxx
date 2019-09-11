@@ -42,7 +42,10 @@ void DEMOutput::ReadData()
     std::cout << "Reading "<< filename<< std::endl;
     STEP = gr.attrs().get<int>("STEP");
     TIME = gr.attrs().get<double>("TIME");
-    THERMAL_TIME=gr.attrs().get<double>("TIME_TEMPERATURE");
+    if(gr.attrs().exists("TIME_TEMPERATURE"))
+        THERMAL_TIME=gr.attrs().get<double>("TIME_TEMPERATURE");
+    else
+        THERMAL_TIME=0;
 
     auto dt = gr.open_dataset("POSITIONS");
     hsize_t dim[2];
