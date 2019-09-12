@@ -81,7 +81,7 @@ void CSVRow::Calculate(DEMOutput&current,DEMOutput&zero)
         values.push_back(current.CenterLineX_POS[i]);
         names.push_back(getName("CenterLineX_TEMP",i));
         values.push_back(current.CenterLineX_TEMP[i]);
-        std::cout<<i<<" POS "<<current.CenterLineX_POS[i]<<"  temp "<<current.CenterLineX_TEMP[i]<<"\n";
+      //  std::cout<<i<<" POS "<<current.CenterLineX_POS[i]<<"  temp "<<current.CenterLineX_TEMP[i]<<"\n";
     }
 
 
