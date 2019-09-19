@@ -75,6 +75,8 @@ void CSVRow::Calculate(DEMOutput&current,DEMOutput&zero)
         values.push_back(current.BOUNDARY_FORCE[i]);
     }
 
+    names.push_back("CenterLineX_COUNT");
+    values.push_back(current.CenterLineX_POS.size());
     for(int i=0;i<current.CenterLineX_POS.size();i++)
     {
         names.push_back(getName("CenterLineX_POS",i));
