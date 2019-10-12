@@ -12,8 +12,14 @@ namespace fs = std::experimental::filesystem;
 #include "H5Parser/CSVRow.h"
 
 
-int main()
+int main(int argc,char *argv[])
 {
+    std::vector<int> NR;
+    if(argc>1)
+    {
+        for(int i=1;i<argc;i++)
+        NR.push_back(atoi(argv[i]));
+    }
     std::vector<std::string> filenames;
     for(auto& p: fs::directory_iterator(fs::path("./data")))
     {
@@ -26,7 +32,7 @@ int main()
     filenames.pop_back();//removing last file
     std::vector<DEMOutput> datasets;
     for( std::string x:filenames)
-        datasets.push_back(DEMOutput(x));
+        datasets.push_back(DEMOutput(x,NR));
     for (DEMOutput &x:datasets)
         x.ReadData();
 

@@ -8,9 +8,10 @@
 #define PADALINIMU_SKAICIUS 20
 
 
-DEMOutput::DEMOutput(std::string filename)
+DEMOutput::DEMOutput(std::string filename, std::vector<int> ParticleNR)
 { 
     this->filename=filename;
+    this->ParticleNR=ParticleNR;
 }
 void DEMOutput::ReadData()
 {
@@ -59,6 +60,7 @@ void DEMOutput::ReadData()
 
 
     std::vector<double> POSITIONS=ReadDoubleArray(gr,"POSITIONS",NumberOfPoints,4);
+    std::vector<double> VELOCITY=ReadDoubleArray(gr,"VELOCITY",NumberOfPoints,4);
     std::vector<double> FORCE=ReadDoubleArray(gr,"FORCE",NumberOfPoints,4);
     std::vector<int> FIX=ReadIntArray(gr,"PARTICLE_FIX",NumberOfPoints,1);
     MAX_FIX=*std::max_element(FIX.begin(),FIX.end())+1;
@@ -164,5 +166,21 @@ void DEMOutput::ReadData()
      //   std::cout<<"Padalinimas "<<CenterLineX_POS[i]<<" pakliuvo "<<patekoDaleliu<<"\n";
     }
 
+
+    for(int i=0;i<ParticleNR.size();i++)
+    {
+        int id=ParticleNR[i];
+        ParticlePOSX.push_back(POSITIONS[id*4+0]);
+        ParticlePOSY.push_back(POSITIONS[id*4+1]);
+        ParticlePOSZ.push_back(POSITIONS[id*4+2]);
+        ParticleVELX.push_back(VELOCITY[id*4+0]);
+        ParticleVELY.push_back(VELOCITY[id*4+1]);
+        ParticleVELZ.push_back(VELOCITY[id*4+2]);
+        ParticleFORCEX.push_back(FORCE[id*4+0]);
+        ParticleFORCEY.push_back(FORCE[id*4+1]);
+        ParticleFORCEZ.push_back(FORCE[id*4+2]);
+        ParticleTEMPERATURE.push_back(TEMPERATURE[id]);
+
+    }
 
 }

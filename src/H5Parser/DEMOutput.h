@@ -10,7 +10,7 @@ typedef  std::vector<Point> TASKAI;
 class DEMOutput
 {
 public:
-    DEMOutput(std::string filename);
+    DEMOutput(std::string filename,std::vector<int> ParticleNR);
     void ReadData();
 public:
     std::string filename;
@@ -43,6 +43,19 @@ public:
 
     std::vector<double> CenterLineX_POS;
     std::vector<double> CenterLineX_TEMP;
+
+
+    std::vector<int> ParticleNR;
+    std::vector<double> ParticlePOSX;
+    std::vector<double> ParticlePOSY;
+    std::vector<double> ParticlePOSZ;
+    std::vector<double> ParticleVELX;
+    std::vector<double> ParticleVELY;
+    std::vector<double> ParticleVELZ;
+    std::vector<double> ParticleFORCEX;
+    std::vector<double> ParticleFORCEY;
+    std::vector<double> ParticleFORCEZ;
+    std::vector<double> ParticleTEMPERATURE;
 
 
 };
