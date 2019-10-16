@@ -53,8 +53,8 @@ void PorocityInBox::Compute(TASKAI &points, ParsingParameters *params)
         {
             Point P=points[i];
             if(P.x>(minx-Rmax) && P.x<(maxx+Rmax))
-                if(P.y>(miny-Rmax) && P.y<(maxx+Rmax))
-                    if(P.z>(minz-Rmax) && P.z<(maxy+Rmax))
+                if(P.y>(miny-Rmax) && P.y<(maxy+Rmax))
+                    if(P.z>(minz-Rmax) && P.z<(maxz+Rmax))
                     {
                         points1->InsertNextPoint(P.x,P.y,P.z);
                         radius->InsertNextTuple1(P.r);
