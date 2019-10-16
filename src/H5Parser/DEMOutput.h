@@ -7,7 +7,7 @@
 #include "PorocityInBox.h"
 #include "IndividualParticles.h"
 #include "InformationOnLine.h"
-
+#include "SpecForceTIRE.h"
 
 class DEMOutput
 {
@@ -55,6 +55,7 @@ public:
     PorocityInBox porocity;
     IndividualParticles individualParticles;
     InformationOnLine informationOnLine;
+    SpecForceTIRE specForceTIRE;
 
 
 };

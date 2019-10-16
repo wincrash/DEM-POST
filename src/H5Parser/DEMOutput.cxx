@@ -5,6 +5,7 @@
 #include <algorithm>
 
 
+
 #define PADALINIMU_SKAICIUS 20
 
 
@@ -63,6 +64,7 @@ void DEMOutput::ReadData()
     std::vector<double> VELOCITY=ReadDoubleArray(gr,"VELOCITY",NumberOfPoints,4);
     std::vector<double> FORCE=ReadDoubleArray(gr,"FORCE",NumberOfPoints,4);
     std::vector<int> FIX=ReadIntArray(gr,"PARTICLE_FIX",NumberOfPoints,1);
+    std::vector<int> MATERIAL=ReadIntArray(gr,"PARTICLE_MATERIAL",NumberOfPoints,1);
     MAX_FIX=*std::max_element(FIX.begin(),FIX.end())+1;
     FORCE_FIX.resize(MAX_FIX,0);
 
@@ -116,6 +118,7 @@ void DEMOutput::ReadData()
         p.z=POSITIONS[i*4+2];
         p.r=POSITIONS[i*4+3];
         p.fix=FIX[i];
+        p.mat=MATERIAL[i];
 
         p.fx=FORCE[i*4+0];
         p.fy=FORCE[i*4+1];
@@ -170,5 +173,8 @@ void DEMOutput::ReadData()
     individualParticles.Compute(particles,params);
     porocity.Compute(particles,params);
     informationOnLine.Compute(particles,params);
+
+    specForceTIRE.SPEC_FORCE=ReadDoubleArray(gr,"SPEC_FORCE",NumberOfPoints,4);
+    specForceTIRE.Compute(particles,params);
 
 }

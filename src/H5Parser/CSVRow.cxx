@@ -85,9 +85,7 @@ void CSVRow::Calculate(DEMOutput&current,DEMOutput&zero)
 
     current.individualParticles.GetNamesAndValues(names,values);
     current.porocity.GetNamesAndValues(names,values);
-
-
-
+    current.specForceTIRE.GetNamesAndValues(names,values);
 }
 
 std::string CSVRow::getHeader()

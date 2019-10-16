@@ -9,6 +9,7 @@ class Point
 public:
     Point();
     int fix;
+    int mat;
     double x;
     double y;
     double z;

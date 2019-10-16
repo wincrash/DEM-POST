@@ -33,6 +33,8 @@ set(H5Parser
     src/H5Parser/ACalculations.h
     src/H5Parser/InformationOnLine.h
     src/H5Parser/InformationOnLine.cxx
+    src/H5Parser/SpecForceTIRE.cxx
+    src/H5Parser/SpecForceTIRE.h
 
     )
 
