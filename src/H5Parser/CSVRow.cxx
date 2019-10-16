@@ -9,12 +9,7 @@ CSVRow::CSVRow()
 
 void CSVRow::Calculate(DEMOutput&current,DEMOutput&zero)
 {
-    auto getName=[](auto a,auto b)->std::string
-    {
-        std::stringstream str;
-        str<<a<<"_"<<b;
-        return str.str();
-    };
+
     names.push_back("STEP");
     values.push_back(current.STEP);
     names.push_back("TIME");
@@ -86,36 +81,10 @@ void CSVRow::Calculate(DEMOutput&current,DEMOutput&zero)
       //  std::cout<<i<<" POS "<<current.CenterLineX_POS[i]<<"  temp "<<current.CenterLineX_TEMP[i]<<"\n";
     }
 
-    for(int i=0;i<current.ParticleNR.size();i++)
-    {
-        int ID=current.ParticleNR[i];
-        names.push_back(getName("ParticlePOSX",i));
-        values.push_back(current.ParticlePOSX[i]);
-        names.push_back(getName("ParticlePOSY",i));
-        values.push_back(current.ParticlePOSY[i]);
-        names.push_back(getName("ParticlePOSZ",i));
-        values.push_back(current.ParticlePOSZ[i]);
-
-        names.push_back(getName("ParticleVELX",i));
-        values.push_back(current.ParticleVELX[i]);
-
-        names.push_back(getName("ParticleVELY",i));
-        values.push_back(current.ParticleVELY[i]);
-
-        names.push_back(getName("ParticleVELZ",i));
-        values.push_back(current.ParticleVELZ[i]);
 
 
-        names.push_back(getName("ParticleFORCEX",i));
-        values.push_back(current.ParticleFORCEX[i]);
-        names.push_back(getName("ParticleFORCEY",i));
-        values.push_back(current.ParticleFORCEY[i]);
-        names.push_back(getName("ParticleFORCEZ",i));
-        values.push_back(current.ParticleFORCEZ[i]);
-        names.push_back(getName("ParticleTEMPERATURE",i));
-        values.push_back(current.ParticleTEMPERATURE[i]);
-
-    }
+    current.individualParticles.GetNamesAndValues(names,values);
+    current.porocity.GetNamesAndValues(names,values);
 
 
 

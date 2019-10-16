@@ -8,10 +8,10 @@
 #define PADALINIMU_SKAICIUS 20
 
 
-DEMOutput::DEMOutput(std::string filename, std::vector<int> ParticleNR)
+DEMOutput::DEMOutput(std::string filename,ParsingParameters*params)
 { 
     this->filename=filename;
-    this->ParticleNR=ParticleNR;
+    this->params=params;
 }
 void DEMOutput::ReadData()
 {
@@ -167,20 +167,8 @@ void DEMOutput::ReadData()
     }
 
 
-    for(int i=0;i<ParticleNR.size();i++)
-    {
-        int id=ParticleNR[i];
-        ParticlePOSX.push_back(POSITIONS[id*4+0]);
-        ParticlePOSY.push_back(POSITIONS[id*4+1]);
-        ParticlePOSZ.push_back(POSITIONS[id*4+2]);
-        ParticleVELX.push_back(VELOCITY[id*4+0]);
-        ParticleVELY.push_back(VELOCITY[id*4+1]);
-        ParticleVELZ.push_back(VELOCITY[id*4+2]);
-        ParticleFORCEX.push_back(FORCE[id*4+0]);
-        ParticleFORCEY.push_back(FORCE[id*4+1]);
-        ParticleFORCEZ.push_back(FORCE[id*4+2]);
-        ParticleTEMPERATURE.push_back(TEMPERATURE[id]);
-
-    }
+    individualParticles.Compute(particles,params);
+    porocity.Compute(particles,params);
+    informationOnLine.Compute(particles,params);
 
 }

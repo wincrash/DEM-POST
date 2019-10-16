@@ -3,16 +3,19 @@
 #include <string>
 #include <vector>
 #include "H5Parser/Point.h"
+#include "ParsingParameters.h"
+#include "PorocityInBox.h"
+#include "IndividualParticles.h"
+#include "InformationOnLine.h"
 
-
-typedef  std::vector<Point> TASKAI;
 
 class DEMOutput
 {
 public:
-    DEMOutput(std::string filename,std::vector<int> ParticleNR);
+    DEMOutput(std::string filename,ParsingParameters *params);
     void ReadData();
 public:
+    ParsingParameters *params;
     std::string filename;
     TASKAI particles;
     int NumberOfPoints;
@@ -45,17 +48,13 @@ public:
     std::vector<double> CenterLineX_TEMP;
 
 
-    std::vector<int> ParticleNR;
-    std::vector<double> ParticlePOSX;
-    std::vector<double> ParticlePOSY;
-    std::vector<double> ParticlePOSZ;
-    std::vector<double> ParticleVELX;
-    std::vector<double> ParticleVELY;
-    std::vector<double> ParticleVELZ;
-    std::vector<double> ParticleFORCEX;
-    std::vector<double> ParticleFORCEY;
-    std::vector<double> ParticleFORCEZ;
-    std::vector<double> ParticleTEMPERATURE;
+
+
+
+
+    PorocityInBox porocity;
+    IndividualParticles individualParticles;
+    InformationOnLine informationOnLine;
 
 
 };

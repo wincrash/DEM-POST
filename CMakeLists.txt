@@ -23,7 +23,16 @@ set(H5Parser
 
     src/H5Parser/CSVRow.cxx
     src/H5Parser/CSVRow.h
-
+    src/H5Parser/ParsingParameters.cxx
+    src/H5Parser/ParsingParameters.h
+    src/H5Parser/PorocityInBox.cxx
+    src/H5Parser/PorocityInBox.h
+    src/H5Parser/IndividualParticles.cxx
+    src/H5Parser/IndividualParticles.h
+    src/H5Parser/ACalculations.cxx
+    src/H5Parser/ACalculations.h
+    src/H5Parser/InformationOnLine.h
+    src/H5Parser/InformationOnLine.cxx
 
     )
 
@@ -34,5 +43,5 @@ set(MY_LIBS -lpthread -lstdc++fs libH5Parser ${VTK_LIBRARIES}  ${HDF5_LIBRARIES}
 
 
 
-add_executable(${PROJECT_NAME} "main.cxx")
+add_executable(${PROJECT_NAME} "main.cxx" "src/utils/cxxopts.hpp" )
 target_link_libraries(${PROJECT_NAME} ${MY_LIBS})
