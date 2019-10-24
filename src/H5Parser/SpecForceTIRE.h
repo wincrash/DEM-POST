@@ -15,6 +15,8 @@ public:
 
     double TotalForceMat0=0;
     double TotalForceMat1=0;
+    double TotalForce0[3]={0,0,0};
+    double TotalForce1[3]={0,0,0};
 };
 
 #endif // SPECFORCETIRE_H
