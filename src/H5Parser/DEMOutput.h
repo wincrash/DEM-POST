@@ -8,6 +8,7 @@
 #include "IndividualParticles.h"
 #include "InformationOnLine.h"
 #include "SpecForceTIRE.h"
+#include "MeshCell.h"
 
 class DEMOutput
 {
@@ -56,6 +57,7 @@ public:
     IndividualParticles individualParticles;
     InformationOnLine informationOnLine;
     SpecForceTIRE specForceTIRE;
+    MeshCell meshCell;
 
 
 };

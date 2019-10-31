@@ -173,6 +173,7 @@ void DEMOutput::ReadData()
     individualParticles.Compute(particles,params);
     porocity.Compute(particles,params);
     informationOnLine.Compute(particles,params);
+    meshCell.Compute(BOUNDARY_POINTS,params);
 
     specForceTIRE.SPEC_FORCE=ReadDoubleArray(gr,"SPEC_FORCE",NumberOfPoints,4);
     specForceTIRE.Compute(particles,params);

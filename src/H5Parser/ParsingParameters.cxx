@@ -38,6 +38,7 @@ cxxopts::ParseResult ParsingParameters::getResults()
                 .add_options()
                 ("o,output", "CSV file name", cxxopts::value<std::string>()->default_value("CSV.csv"))
                 ("p,particles", "A list of particles IDS seperated with ,", cxxopts::value<std::vector<int>>())
+                ("m,meshcell", "A list of mesh cell to track seperated with ,", cxxopts::value<std::vector<int>>())
                 ("spec-force","Calculate forces of problem TIRE")
                 ("help", "Print help");
         options.add_options("Porocity")
