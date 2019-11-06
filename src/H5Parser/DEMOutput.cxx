@@ -178,4 +178,6 @@ void DEMOutput::ReadData()
     specForceTIRE.SPEC_FORCE=ReadDoubleArray(gr,"SPEC_FORCE",NumberOfPoints,4);
     specForceTIRE.Compute(particles,params);
 
+    contactInformation.Compute(particles,params);
+
 }

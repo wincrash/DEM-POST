@@ -87,6 +87,7 @@ void CSVRow::Calculate(DEMOutput&current,DEMOutput&zero)
     current.porocity.GetNamesAndValues(names,values);
     current.specForceTIRE.GetNamesAndValues(names,values);
     current.meshCell.GetNamesAndValues(names,values);
+    current.contactInformation.GetNamesAndValues(names,values);
 }
 
 std::string CSVRow::getHeader()

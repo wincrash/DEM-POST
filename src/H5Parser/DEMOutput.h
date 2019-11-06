@@ -9,6 +9,7 @@
 #include "InformationOnLine.h"
 #include "SpecForceTIRE.h"
 #include "MeshCell.h"
+#include "ContactInformation.h"
 
 class DEMOutput
 {
@@ -58,6 +59,7 @@ public:
     InformationOnLine informationOnLine;
     SpecForceTIRE specForceTIRE;
     MeshCell meshCell;
+    ContactInformation contactInformation;
 
 
 };

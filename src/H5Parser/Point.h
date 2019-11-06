@@ -38,5 +38,5 @@ auto getName=[](auto a,auto b)->std::string
 
 void GetMinMaxRadius(TASKAI &points,double &RMin,double &RMax);
 
-
+double GetDistance(Point &P1,Point &P2);
 #endif // POINT_H

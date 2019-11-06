@@ -1,5 +1,5 @@
 #include "Point.h"
-
+#include <cmath>
 Point::Point()
 {
 
@@ -17,3 +17,10 @@ void GetMinMaxRadius(TASKAI &points,double &RMin,double &RMax)
     }
 }
 
+double GetDistance(Point &P1,Point &P2)
+{
+    double diffx=P1.x-P2.x;
+    double diffy=P1.y-P2.y;
+    double diffz=P1.z-P2.z;
+    return std::sqrt(diffx*diffx+diffy*diffy+diffz*diffz);
+}

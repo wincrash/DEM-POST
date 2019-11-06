@@ -40,6 +40,8 @@ cxxopts::ParseResult ParsingParameters::getResults()
                 ("p,particles", "A list of particles IDS seperated with ,", cxxopts::value<std::vector<int>>())
                 ("m,meshcell", "A list of mesh cell to track seperated with ,", cxxopts::value<std::vector<int>>())
                 ("spec-force","Calculate forces of problem TIRE")
+                ("contact-information","Calculate contact information, coordination number and overalp")
+
                 ("help", "Print help");
         options.add_options("Porocity")
                 ("porocity","Calculate porocity in box")

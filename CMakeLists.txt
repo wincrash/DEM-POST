@@ -37,7 +37,12 @@ set(H5Parser
     src/H5Parser/SpecForceTIRE.h
     src/H5Parser/MeshCell.cxx
     src/H5Parser/MeshCell.h
-
+    src/H5Parser/ContactInformation.cxx
+    src/H5Parser/ContactInformation.h
+    src/H5Parser/BondGenerator.cxx
+    src/H5Parser/BondGenerator.h
+    src/H5Parser/Bond.cxx
+    src/H5Parser/Bond.h
     )
 
 
