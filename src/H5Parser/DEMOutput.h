@@ -10,6 +10,7 @@
 #include "SpecForceTIRE.h"
 #include "MeshCell.h"
 #include "ContactInformation.h"
+#include "GlobalParameters.h"
 
 class DEMOutput
 {
@@ -60,6 +61,7 @@ public:
     SpecForceTIRE specForceTIRE;
     MeshCell meshCell;
     ContactInformation contactInformation;
+    GlobalParameters globalParameters;
 
 
 };

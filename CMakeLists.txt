@@ -43,6 +43,8 @@ set(H5Parser
     src/H5Parser/BondGenerator.h
     src/H5Parser/Bond.cxx
     src/H5Parser/Bond.h
+    src/H5Parser/GlobalParameters.cxx
+    src/H5Parser/GlobalParameters.h
     )
 
 

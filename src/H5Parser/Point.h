@@ -3,7 +3,7 @@
 #include <vector>
 #include <string>
 #include <sstream>
-
+#define PI 3.14159265359
 class Point
 {
 public:
@@ -17,6 +17,7 @@ public:
     double vx;
     double vy;
     double vz;
+    double mass;
 
     double force;
     double fx;

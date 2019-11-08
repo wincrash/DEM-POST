@@ -117,6 +117,7 @@ void DEMOutput::ReadData()
         p.y=POSITIONS[i*4+1];
         p.z=POSITIONS[i*4+2];
         p.r=POSITIONS[i*4+3];
+        p.mass=VELOCITY[i*4+3];
         p.fix=FIX[i];
         p.mat=MATERIAL[i];
 
@@ -179,5 +180,6 @@ void DEMOutput::ReadData()
     specForceTIRE.Compute(particles,params);
 
     contactInformation.Compute(particles,params);
+    globalParameters.Compute(particles,params);
 
 }
