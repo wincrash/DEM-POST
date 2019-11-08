@@ -88,6 +88,7 @@ void CSVRow::Calculate(DEMOutput&current,DEMOutput&zero)
     current.specForceTIRE.GetNamesAndValues(names,values);
     current.meshCell.GetNamesAndValues(names,values);
     current.contactInformation.GetNamesAndValues(names,values);
+    current.globalParameters.GetNamesAndValues(names,values);
 }
 
 std::string CSVRow::getHeader()
