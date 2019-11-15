@@ -1,6 +1,7 @@
 #include "ContactInformation.h"
 #include "BondGenerator.h"
-
+#include <algorithm>
+#include <numeric>
 ContactInformation::ContactInformation()
 {
 
@@ -18,6 +19,8 @@ void ContactInformation::Compute(TASKAI &points, ParsingParameters *params)
         avgOverlap=0;
         maxOverlap=0;
         int N=0;
+        std::vector<int> contactCount;
+        contactCount.resize(points.size(),0);
         for(auto b:bonds)
         {
             int id1=b.ID1;
@@ -30,11 +33,13 @@ void ContactInformation::Compute(TASKAI &points, ParsingParameters *params)
                 N++;
                 avgOverlap=avgOverlap+overlap;
                 if(maxOverlap<overlap) maxOverlap=overlap;
+                contactCount[id1]++;
+                contactCount[id2]++;
             }
         }
         ContactCount=N;
         avgOverlap=avgOverlap/N;
-        coordinationNumber=N*2/points.size();
+        coordinationNumber=std::accumulate(contactCount.begin(),contactCount.end(),0)/contactCount.size();
     }
 }
 void ContactInformation::GetNamesAndValues(std::vector<std::string> &names,std::vector<double> &values)
