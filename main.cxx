@@ -7,10 +7,9 @@
 using namespace std;
 namespace fs = std::experimental::filesystem;
 
-
-#include "H5Parser/DEMOutput.h"
-#include "H5Parser/CSVRow.h"
-#include "H5Parser/ParsingParameters.h"
+#include "core/Dataset.h"
+#include "core/CSVRow.h"
+#include "core/ParsingParameters.h"
 
 
 int main(int argc,char *argv[])
@@ -30,19 +29,14 @@ int main(int argc,char *argv[])
     }
     std::sort(filenames.begin(),filenames.end());
     filenames.pop_back();//removing last file
-    std::vector<DEMOutput> datasets;
-    for( std::string x:filenames)
-        datasets.push_back(DEMOutput(x,parameters));
-    for (DEMOutput &x:datasets)
-        x.ReadData();
 
-
+    Dataset zero(filenames[0]);
     std::vector<CSVRow> csvrows;
-
-    for (DEMOutput &x:datasets)
+    for (auto &filename:filenames)
     {
+        Dataset current(filename);
         CSVRow row;
-        row.Calculate(x,datasets[0]);
+        row.Calculate(parameters,zero,current);
         csvrows.push_back(row);
     }
 

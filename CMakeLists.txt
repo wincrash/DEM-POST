@@ -14,43 +14,54 @@ include_directories(${HDF5_INCLUDE_DIR})
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(H5Parser
-    src/H5Parser/DEMOutput.cxx
-    src/H5Parser/DEMOutput.h
+set(modules
+    src/core/Boundary.cxx
+    src/core/Boundary.h
+    src/core/Dataset.cxx
+    src/core/Dataset.h
+    src/core/Particle.cxx
+    src/core/Particle.h
+    src/core/AModule.cxx
+    src/core/AModule.h
 
-    src/H5Parser/Point.cxx
-    src/H5Parser/Point.h
+    src/core/CSVRow.cxx
+    src/core/CSVRow.h
 
-    src/H5Parser/CSVRow.cxx
-    src/H5Parser/CSVRow.h
-    src/H5Parser/ParsingParameters.cxx
-    src/H5Parser/ParsingParameters.h
-    src/H5Parser/PorocityInBox.cxx
-    src/H5Parser/PorocityInBox.h
-    src/H5Parser/IndividualParticles.cxx
-    src/H5Parser/IndividualParticles.h
-    src/H5Parser/ACalculations.cxx
-    src/H5Parser/ACalculations.h
-    src/H5Parser/InformationOnLine.h
-    src/H5Parser/InformationOnLine.cxx
-    src/H5Parser/SpecForceTIRE.cxx
-    src/H5Parser/SpecForceTIRE.h
-    src/H5Parser/MeshCell.cxx
-    src/H5Parser/MeshCell.h
-    src/H5Parser/ContactInformation.cxx
-    src/H5Parser/ContactInformation.h
-    src/H5Parser/BondGenerator.cxx
-    src/H5Parser/BondGenerator.h
-    src/H5Parser/Bond.cxx
-    src/H5Parser/Bond.h
-    src/H5Parser/GlobalParameters.cxx
-    src/H5Parser/GlobalParameters.h
+    src/core/Bond.h
+    src/core/Bond.cxx
+
+    src/core/BondGenerator.h
+    src/core/BondGenerator.cxx
+
+    src/modules/ModuleFactory.cxx
+    src/modules/ModuleFactory.h
+    src/core/ParsingParameters.cxx
+    src/core/ParsingParameters.h
+
+
+    src/modules/GlobalParameters.cxx
+    src/modules/GlobalParameters.h
+    src/modules/Boundaries.cxx
+    src/modules/Boundaries.h
+    src/modules/IndividualParticles.h
+    src/modules/IndividualParticles.cxx
+    src/modules/LineStrain.cxx
+    src/modules/LineStrain.h
+    src/modules/ParticleFixes.cxx
+    src/modules/ParticleFixes.h
+
+    src/modules/ContactInformation.cxx
+    src/modules/ContactInformation.h
+
+    src/modules/MeshCell.cxx
+    src/modules/MeshCell.h
+
     )
 
 
-ADD_LIBRARY( libH5Parser STATIC ${H5Parser} )
+ADD_LIBRARY( modules STATIC ${modules} )
 include_directories(${PROJECT_SOURCE_DIR}/src)
-set(MY_LIBS -lpthread -lstdc++fs libH5Parser ${VTK_LIBRARIES}  ${HDF5_LIBRARIES} )
+set(MY_LIBS -lpthread -lstdc++fs modules ${VTK_LIBRARIES}  ${HDF5_LIBRARIES} )
 
 
 

@@ -47,7 +47,12 @@ cxxopts::ParseResult ParsingParameters::getResults()
                 ("porocity","Calculate porocity in box")
                 ("resolution", "Resolution of the sphere", cxxopts::value<int>()->default_value("16"))
                 ("bounds", "Box bounds, minx,maxx,miny,maxy,minz,maxz", cxxopts::value<std::vector<double>>());
-
+        options.add_options("LineStrain")
+                ("linestrain","Calculate line strain")
+                ("linestrain-point1", "Line point 1, x,y,z seperated with ,", cxxopts::value<std::vector<double>>())
+                ("linestrain-point2", "Line point 2, x,y,z seperated with ,", cxxopts::value<std::vector<double>>())
+                ("linestrain-count", "Number of segments", cxxopts::value<int>()->default_value("5"))
+                ("linestrain-radius", "Radius of segments", cxxopts::value<double>()->default_value("0.01"));
         int bargc=argc;
         auto bargv=copy_argv(argc,argv);
         cxxopts::ParseResult result = options.parse(this->argc, this->argv);

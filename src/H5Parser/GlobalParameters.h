@@ -2,6 +2,7 @@
 #define GLOBALPARAMETERS_H
 
 #include "ACalculations.h"
+#include "../H5Parser/ParsingParameters.h"
 
 class GlobalParameters:public ACalculations
 {
