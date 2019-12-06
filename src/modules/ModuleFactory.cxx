@@ -5,7 +5,7 @@
 #include "LineStrain.h"
 #include "ParticleFixes.h"
 #include "ContactInformation.h"
-
+#include "MeshCell.h"
 ModuleFactory::ModuleFactory()
 {
 
@@ -36,4 +36,9 @@ AModule* ModuleFactory::createModule(std::string name)
     {
         return  new ContactInformation();
     }
+    if(name.compare("MeshCell")==0)
+    {
+        return  new MeshCell();
+    }
+
 }
