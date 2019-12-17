@@ -33,8 +33,8 @@ void MeshCell::Calculate(ParsingParameters*params,Dataset &zero,Dataset&current)
             PZ.push_back((z1+z2+z3)/3.0);
             F.push_back(current.boundaries.FORCE[id]);
         }
-
     }
+
 }
 
 void MeshCell::GetNamesAndValues(std::vector<std::string> &names,std::vector<double> &values)
