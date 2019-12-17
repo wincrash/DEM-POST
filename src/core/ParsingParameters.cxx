@@ -60,7 +60,7 @@ cxxopts::ParseResult ParsingParameters::getResults()
         argv=bargv;
         if (result.count("help"))
         {
-            std::cout << options.help({"", "Porocity"}) << std::endl;
+            std::cout << options.help({"", "Porocity","LineStrain"}) << std::endl;
             exit(0);
         }
 
