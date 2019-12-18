@@ -5,6 +5,7 @@
 #include <algorithm>
 Dataset::Dataset(std::string filename)
 {
+    this->filename=filename;
     h5cpp::File file(filename, "r");
     auto gr = file.root();
 
