@@ -6,6 +6,7 @@
 #include "ParticleFixes.h"
 #include "ContactInformation.h"
 #include "MeshCell.h"
+#include "BondsInformation.h"
 ModuleFactory::ModuleFactory()
 {
 
@@ -40,5 +41,10 @@ AModule* ModuleFactory::createModule(std::string name)
     {
         return  new MeshCell();
     }
+    if(name.compare("BondsInformation")==0)
+    {
+        return  new BondsInformation();
+    }
+
 
 }

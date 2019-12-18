@@ -6,6 +6,28 @@
 #include <string>
 #include <sstream>
 #include <algorithm>
+#include "H5Parser/hdf_wrapper.hpp"
+
+auto ReadIntArray=[](auto &gr,auto name,int N,int D)->std::vector<int>
+{
+    std::vector<int> data(N*D,0);
+    if(!gr.exists(name)) return data;
+    auto dt = gr.open_dataset(name);
+    hsize_t dim[2];
+    dt.get_dataspace().get_dims(dim);
+    dt.read(&data[0]);
+    return data;
+};
+auto ReadDoubleArray=[](auto &gr,auto name,int N,int D)->std::vector<double>
+{
+    std::vector<double> data(N*D,0);
+    if(!gr.exists(name)) return data;
+    auto dt = gr.open_dataset(name);
+    hsize_t dim[2];
+    dt.get_dataspace().get_dims(dim);
+    dt.read(&data[0]);
+    return data;
+};
 
 class Dataset
 {

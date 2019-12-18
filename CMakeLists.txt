@@ -56,6 +56,9 @@ set(modules
     src/modules/MeshCell.cxx
     src/modules/MeshCell.h
 
+    src/modules/BondsInformation.cxx
+    src/modules/BondsInformation.h
+
     )
 
 

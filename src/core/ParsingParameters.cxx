@@ -53,6 +53,11 @@ cxxopts::ParseResult ParsingParameters::getResults()
                 ("linestrain-point2", "Line point 2, x,y,z seperated with ,", cxxopts::value<std::vector<double>>())
                 ("linestrain-count", "Number of segments", cxxopts::value<int>()->default_value("5"))
                 ("linestrain-radius", "Radius of segments", cxxopts::value<double>()->default_value("0.01"));
+
+        options.add_options("BondsInformation")
+                ("bonds-information","Calculate bonds information");
+
+
         int bargc=argc;
         auto bargv=copy_argv(argc,argv);
         cxxopts::ParseResult result = options.parse(this->argc, this->argv);
@@ -60,7 +65,7 @@ cxxopts::ParseResult ParsingParameters::getResults()
         argv=bargv;
         if (result.count("help"))
         {
-            std::cout << options.help({"", "Porocity","LineStrain"}) << std::endl;
+            std::cout << options.help({"", "Porocity","LineStrain","BondsInformation"}) << std::endl;
             exit(0);
         }
 
