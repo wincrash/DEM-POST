@@ -45,8 +45,9 @@ void MeshCell::Calculate(ParsingParameters*params,Dataset &zero,Dataset&current)
                     avg=avg+ilgis;
                     if(maxas<ilgis) maxas=ilgis;
                 }
-
             }
+           this->AVG_OVERLAP.push_back(avg/overlap_kiekis);
+            this->MAX_OVERLAP.push_back(maxas);
 
         }
     }
