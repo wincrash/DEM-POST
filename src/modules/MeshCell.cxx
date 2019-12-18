@@ -39,7 +39,7 @@ void MeshCell::Calculate(ParsingParameters*params,Dataset &zero,Dataset&current)
             for(auto &p:current.particles)
             {
                 double ilgis=p.radius-fabs(PX[PX.size()-1]-p.position[0]);
-                if(ilgis<0)
+                if(ilgis>0)
                 {
                     overlap_kiekis++;
                     avg=avg+ilgis;
