@@ -13,6 +13,8 @@ public:
     std::vector<double> PY;
     std::vector<double> PZ;
     std::vector<double> F;
+    std::vector<double> MAX_OVERLAP;
+    std::vector<double> AVG_OVERLAP;
 };
 
 

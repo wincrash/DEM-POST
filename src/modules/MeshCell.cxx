@@ -32,6 +32,22 @@ void MeshCell::Calculate(ParsingParameters*params,Dataset &zero,Dataset&current)
             PY.push_back((y1+y2+y3)/3.0);
             PZ.push_back((z1+z2+z3)/3.0);
             F.push_back(current.boundaries.FORCE[id]);
+
+            double maxas=0;
+            double avg=0;
+            int overlap_kiekis=0;
+            for(auto &p:current.particles)
+            {
+                double ilgis=p.radius-fabs(PX[i]-p.position[0]);
+                if(ilgis<0)
+                {
+                    overlap_kiekis++;
+                    avg=avg+ilgis;
+                    if(maxas<ilgis) maxas=ilgis;
+                }
+
+            }
+
         }
     }
 
@@ -52,6 +68,10 @@ void MeshCell::GetNamesAndValues(std::vector<std::string> &names,std::vector<dou
             values.push_back(PZ[i]);
             names.push_back(getName("MeshCell_FORCE",id));
             values.push_back(F[i]);
+            names.push_back(getName("MeshCell_MAX_OVERLAP",id));
+            values.push_back(MAX_OVERLAP[i]);
+            names.push_back(getName("MeshCell_AVG_OVERLAP",id));
+            values.push_back(AVG_OVERLAP[i]);
         }
     }
 }
