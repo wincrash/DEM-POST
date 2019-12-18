@@ -35,7 +35,7 @@ void BondsInformation::Calculate(ParsingParameters*params,Dataset &zero,Dataset&
             {
                 this->BONDS_BROKEN_SHEAR++;
             }
-            if(x==3)//BROKEN_NORMAL_TENSION
+            if(x==1)//BROKEN_NORMAL_TENSION
             {
                 this->BONDS_BROKEN_NORMAL++;
             }
