@@ -17,6 +17,11 @@ void ParticleFixes::Calculate(ParsingParameters*params,Dataset &zero,Dataset&cur
     FORCE_X.resize(maxFix+1,0);
     FORCE_Y.resize(maxFix+1,0);
     FORCE_Z.resize(maxFix+1,0);
+    POSITION_X.resize(maxFix+1,0);
+    POSITION_Y.resize(maxFix+1,0);
+    POSITION_Z.resize(maxFix+1,0);
+
+    KIEKIS.resize(maxFix+1,0);
     for(auto &p:current.particles)
     {
         double fx=p.force[0];
@@ -27,6 +32,12 @@ void ParticleFixes::Calculate(ParsingParameters*params,Dataset &zero,Dataset&cur
         FORCE_X[p.fix]=FORCE_X[p.fix]+fx;
         FORCE_Y[p.fix]=FORCE_Y[p.fix]+fy;
         FORCE_Z[p.fix]=FORCE_Z[p.fix]+fz;
+
+        POSITION_X[p.fix]=POSITION_X[p.fix]+p.position[0];
+        POSITION_Y[p.fix]=POSITION_Y[p.fix]+p.position[1];
+        POSITION_Z[p.fix]=POSITION_Z[p.fix]+p.position[2];
+        KIEKIS[p.fix]++;
+
     }
 
 }
@@ -48,6 +59,17 @@ void ParticleFixes::GetNamesAndValues(std::vector<std::string> &names,std::vecto
 
             names.push_back(getName("PARTICLE_FIX_FORCE_Z",i));
             values.push_back(FORCE_Z[i]);
+
+
+
+            names.push_back(getName("PARTICLE_FIX_X",i));
+            values.push_back(POSITION_X[i]/KIEKIS[i]);
+
+            names.push_back(getName("PARTICLE_FIX_Y",i));
+            values.push_back(POSITION_Y[i]/KIEKIS[i]);
+
+            names.push_back(getName("PARTICLE_FIX_Z",i));
+            values.push_back(POSITION_Z[i]/KIEKIS[i]);
 
         }
     }
