@@ -7,12 +7,12 @@ MeshForce::MeshForce()
 void MeshForce::Calculate(ParsingParameters*params,Dataset &zero,Dataset&current)
 {
     auto result= params->getResults();
-    if (result.count("MeshForce"))
+    if (result.count("meshForce"))
     {
         calculate=true;
         MeshIDPairs.resize(0);
-        auto rr=result["MeshForce"].as<std::vector<int>>();
-        for(int i=0;i<rr.size();i=i+2)
+        auto rr=result["meshForce"].as<std::vector<int>>();
+        for(size_t i=0;i<rr.size();i=i+2)
         {
             std::pair<int,int> p;
             p.first=rr[i];

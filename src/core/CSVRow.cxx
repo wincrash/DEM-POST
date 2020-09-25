@@ -18,6 +18,7 @@ void CSVRow::Calculate(ParsingParameters *params, Dataset &zero, Dataset &curren
     modules.push_back(factory.createModule("ParticleFixes"));
     modules.push_back(factory.createModule("ContactInformation"));
     modules.push_back(factory.createModule("MeshCell"));
+    modules.push_back(factory.createModule("MeshForce"));
     modules.push_back(factory.createModule("BondsInformation"));
 
 
