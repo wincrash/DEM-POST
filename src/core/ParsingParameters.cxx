@@ -41,6 +41,7 @@ cxxopts::ParseResult ParsingParameters::getResults()
                 ("m,meshcell", "A list of mesh cell to track seperated with ,", cxxopts::value<std::vector<int>>())
                 ("spec-force","Calculate forces of problem TIRE")
                 ("contact-information","Calculate contact information, coordination number and overalp")
+                ("meshForce", "A list of pairs of mesh indexes", cxxopts::value<std::vector<int>>())
 
                 ("help", "Print help");
         options.add_options("Porocity")

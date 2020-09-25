@@ -7,6 +7,7 @@
 #include "ContactInformation.h"
 #include "MeshCell.h"
 #include "BondsInformation.h"
+#include "MeshForce.h"
 ModuleFactory::ModuleFactory()
 {
 
@@ -45,6 +46,11 @@ AModule* ModuleFactory::createModule(std::string name)
     {
         return  new BondsInformation();
     }
+    if(name.compare("MeshForce")==0)
+    {
+        return  new MeshForce();
+    }
+
 
 
 }

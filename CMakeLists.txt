@@ -58,6 +58,8 @@ set(modules
 
     src/modules/BondsInformation.cxx
     src/modules/BondsInformation.h
+    src/modules/MeshForce.cxx
+    src/modules/MeshForce.h
 
     )
 
